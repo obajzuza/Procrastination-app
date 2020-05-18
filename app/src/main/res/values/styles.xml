@@ -6,6 +6,21 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+            <item name="textAllCaps">true</item>
+            <item name="android:textAllCaps">true</item>
+
+    </style>
+
+    <style name="title">
+        <item name="color">@color/colorDark</item>
+        <item name="textAllCaps">true</item>
+        <item name="fontFamily">sans-serif-condensed</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
+    </style>
+
+    <style name="description">
+        
     </style>
 
 </resources>

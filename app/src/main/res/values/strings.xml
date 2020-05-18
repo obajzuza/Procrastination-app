@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">ProcrastinationApp</string>
+    <string name="app_name">ProcrastiApp</string>
+
+    <!-- activity main -->
+    <string name="pending">oczekujące zadania</string>
+    <string name="points">punkty do wydania</string>
+    <string name="recent_task">Ostatnie zadanie:</string>
+    <string name="recent_prize">Ostatnia nagroda:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
