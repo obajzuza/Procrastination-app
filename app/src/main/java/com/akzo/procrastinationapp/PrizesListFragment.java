@@ -35,6 +35,15 @@ public class PrizesListFragment extends Fragment {
         PrizeData[] exampleData = new PrizeData[] {
                 new PrizeData("Nagroda 1", "15 min robienia aktywności jak w tytule", 15, false),
                 new PrizeData("Nagroda 2", "", 50, false),
+                new PrizeData("Nagroda 3", "opis nagrody", 6, false),
+                new PrizeData("Nagroda 1", "15 min robienia aktywności jak w tytule", 15, false),
+                new PrizeData("Nagroda 2", "", 50, false),
+                new PrizeData("Nagroda 3", "opis nagrody", 6, false),
+                new PrizeData("Nagroda 1", "15 min robienia aktywności jak w tytule", 15, false),
+                new PrizeData("Nagroda 2", "", 50, false),
+                new PrizeData("Nagroda 3", "opis nagrody", 6, false),
+                new PrizeData("Nagroda 1", "15 min robienia aktywności jak w tytule", 15, false),
+                new PrizeData("Nagroda 2", "", 50, false),
                 new PrizeData("Nagroda 3", "opis nagrody", 6, false)
         };
 
