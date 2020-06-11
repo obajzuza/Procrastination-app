@@ -9,13 +9,16 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHolder>{
-    private TaskData[] listdata;
+    private ArrayList<TaskData> listdata;
 
     // RecyclerView recyclerView;
-    public TaskListAdapter(TaskData[] listdata) {
-        this.listdata = listdata;
+    public TaskListAdapter(List<TaskData> listdata) {
+        this.listdata = new ArrayList<>(listdata);
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -27,11 +30,11 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final TaskData myListData = listdata[position];
-        holder.titleTextView.setText(listdata[position].getTitle());
-        holder.descriptionTextView.setText(listdata[position].getDescription());
-        holder.deadlineTextView.setText(listdata[position].getDeadline());
-        holder.pointsTextView.setText(Integer.toString(listdata[position].getPoints()));
+        final TaskData myListData = listdata.get(position);
+        holder.titleTextView.setText(listdata.get(position).getTitle());
+        holder.descriptionTextView.setText(listdata.get(position).getDescription());
+        holder.deadlineTextView.setText(listdata.get(position).getDeadline());
+        holder.pointsTextView.setText(Integer.toString(listdata.get(position).getPoints()));
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,7 +46,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return listdata.length;
+        return listdata.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

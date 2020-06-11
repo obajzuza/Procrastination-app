@@ -9,12 +9,15 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.ViewHolder>{
-    private PrizeData[] listdata;
+    private ArrayList<PrizeData> listdata;
 
     // RecyclerView recyclerView;
-    public PrizeListAdapter(PrizeData[] listdata) {
-        this.listdata = listdata;
+    public PrizeListAdapter(List<PrizeData> listdata) {
+        this.listdata = new ArrayList<>(listdata);
     }
 
     @Override
@@ -27,10 +30,10 @@ public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final PrizeData myListData = listdata[position];
-        holder.titleTextView.setText(listdata[position].getTitle());
-        holder.descriptionTextView.setText(listdata[position].getDescription());
-        holder.pointsTextView.setText(Integer.toString(listdata[position].getPoints()));
+        final PrizeData myListData = listdata.get(position);
+        holder.titleTextView.setText(listdata.get(position).getTitle());
+        holder.descriptionTextView.setText(listdata.get(position).getDescription());
+        holder.pointsTextView.setText(Integer.toString(listdata.get(position).getPoints()));
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +45,7 @@ public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.View
 
     @Override
     public int getItemCount() {
-        return listdata.length;
+        return listdata.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

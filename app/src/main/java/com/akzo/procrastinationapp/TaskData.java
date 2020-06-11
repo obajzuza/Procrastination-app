@@ -1,24 +1,49 @@
 package com.akzo.procrastinationapp;
 
-import java.util.Date;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Keep;
+import org.greenrobot.greendao.annotation.Property;
 
+import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
+
+@Entity
 public class TaskData{
+    @Id
     private String title;
+    @Property
     private String description;
-    private Date deadline;
+    @Property
+    private String deadline;
+    @Property
     private int points;
 
+    @Keep
     public TaskData(String title, String description, Date deadline, int points) {
         this.title = title;
         this.description = description;
-        this.deadline = deadline;
+        this.deadline = deadline.toString();
         this.points = points;
     }
 
+    @Keep
     public TaskData(String title, String description, int points) {
         this.title = title;
         this.description = description;
         this.deadline = null;
+        this.points = points;
+    }
+
+    @Generated(hash = 427500158)
+    public TaskData() {
+    }
+
+    @Generated(hash = 1317956218)
+    public TaskData(String title, String description, String deadline, int points) {
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
         this.points = points;
     }
 
@@ -46,7 +71,7 @@ public class TaskData{
     }
 
     public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+        this.deadline = deadline.toString();
     }
 
     public int getPoints() {
@@ -55,5 +80,9 @@ public class TaskData{
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public void setDeadline(String deadline) {
+        this.deadline = deadline;
     }
 }

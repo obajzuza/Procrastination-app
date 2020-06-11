@@ -2,21 +2,28 @@ package com.akzo.procrastinationapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import org.greenrobot.greendao.query.Query;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Switch;
 
 public class PrizesActivity extends AppCompatActivity {
+    private PrizeDataDao prizeDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        prizeDao = daoSession.getPrizeDataDao();
         setContentView(R.layout.activity_prizes);
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
-        ft.replace(R.id.prizePlaceholder, new PrizesListFragment());
+        ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao));
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();
@@ -27,15 +34,15 @@ public class PrizesActivity extends AppCompatActivity {
         if (btn.getText() == getResources().getString(R.string.add)) {
             btn.setText(R.string.reject);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.prizePlaceholder, new AddPrizeFragment());
+            ft.replace(R.id.prizePlaceholder, new AddPrizeFragment(prizeDao));
             ft.commit();
         } else if (btn.getText() == getResources().getString(R.string.reject)) {
             btn.setText(R.string.add);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.prizePlaceholder, new PrizesListFragment());
+            Log.d("UpdatePrize", "test prizes0909909");
+            ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao));
             ft.commit();
         }
-
-
     }
+
 }

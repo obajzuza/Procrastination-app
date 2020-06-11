@@ -163,7 +163,6 @@
             android:layout_marginLeft="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="32dp"
             android:layout_weight="2"
             android:orientation="horizontal">
 
@@ -207,6 +206,7 @@
                         android:textAllCaps="true"
                         app:layout_constraintStart_toEndOf="@+id/prizeImageView"
                         app:layout_constraintTop_toTopOf="parent" />
+
                 </LinearLayout>
 
             </LinearLayout>
@@ -221,6 +221,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@android:drawable/ic_media_play" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/switch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:onClick="switchLearningMode"
+                android:text="Learning Mode" />
         </LinearLayout>
     </LinearLayout>
 
