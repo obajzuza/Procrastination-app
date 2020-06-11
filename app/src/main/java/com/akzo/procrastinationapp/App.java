@@ -10,7 +10,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "akzo-db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "akzo-db2");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }

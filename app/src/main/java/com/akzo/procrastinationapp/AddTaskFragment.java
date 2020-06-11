@@ -20,7 +20,6 @@ public class AddTaskFragment extends Fragment {
     }
 
     public AddTaskFragment(TaskDataDao taskDao){
-        Log.d("Dao", "what the task heck3?");
         this.taskDao = taskDao;
     }
 
@@ -65,6 +64,7 @@ public class AddTaskFragment extends Fragment {
             task.setPoints(points);
             Log.d("DaoExample", "new task" + task);
             taskDao.insert(task);
+            Log.d("Dao", "JeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDUPA");
         }
         catch (android.database.sqlite.SQLiteConstraintException e){
             Toast toast = Toast.makeText(getActivity(),"Task with this title already exists",Toast.LENGTH_LONG);
@@ -74,7 +74,7 @@ public class AddTaskFragment extends Fragment {
         Toast toast = Toast.makeText(getActivity(),"Task added successfully",Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         toast.show();
-        Log.d("DaoExample", "Inserted new prize, title: " + task.getTitle());
+        Log.d("DaoExample", "Inserted new task, title: " + task.getTitle());
         getActivity().onBackPressed();
     }
 }

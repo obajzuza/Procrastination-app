@@ -47,9 +47,7 @@ public class TasksListFragment extends Fragment {
     }
 
     public void updateTasks(View v){
-        //List<TaskData> tasks = tasksQuery.list();
-        List<TaskData> tasks = new ArrayList<>();
-        tasks.add(new TaskData("Zadanie 1", "Wykonać zadanie 1, bardzo ważne", 15));
+        List<TaskData> tasks = tasksQuery.list();
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.tasksRecyclerView);
         TaskListAdapter adapter = new TaskListAdapter(tasks);
         recyclerView.setHasFixedSize(true);

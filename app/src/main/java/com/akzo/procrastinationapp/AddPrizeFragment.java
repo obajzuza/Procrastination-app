@@ -47,6 +47,7 @@ public class AddPrizeFragment extends Fragment {
     }
 
     public void addPrize(View view) {
+        Log.d("Dao", "what the task heck3?");
         Log.d("Dao", "what the heck3?");
         String title = ((EditText) getView().findViewById(R.id.addPrizeTitle)).getText().toString();
         Log.d("Dao", "what the heck? " + title);
