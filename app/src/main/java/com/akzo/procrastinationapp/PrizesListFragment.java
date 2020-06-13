@@ -23,12 +23,14 @@ import java.util.List;
 public class PrizesListFragment extends Fragment {
     private PrizeDataDao prizeDao;
     private Query<PrizeData> prizesQuery;
+    private PointsDao pointsDao;
 
     public PrizesListFragment() {
         // Required empty public constructor
     }
 
-    public PrizesListFragment(PrizeDataDao prizeDao){
+    public PrizesListFragment(PrizeDataDao prizeDao, PointsDao pointsDao){
+        this.pointsDao = pointsDao;
         this.prizeDao = prizeDao;
     }
 
@@ -56,7 +58,7 @@ public class PrizesListFragment extends Fragment {
         Log.d("UpdatePrize", "test prizes1");
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.prizesRecyclerView);
         Log.d("UpdatePrize", "test prizes2");
-        PrizeListAdapter adapter = new PrizeListAdapter(prizes);
+        PrizeListAdapter adapter = new PrizeListAdapter(prizes, pointsDao, prizeDao);
         Log.d("UpdatePrize", "test prizes3");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));

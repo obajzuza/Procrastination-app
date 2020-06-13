@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -15,10 +16,13 @@ import java.util.List;
 
 public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHolder>{
     private ArrayList<TaskData> listdata;
+    private PointsDao pointsDao;
+    private TaskDataDao taskDao;
 
     // RecyclerView recyclerView;
-    public TaskListAdapter(List<TaskData> listdata) {
+    public TaskListAdapter(List<TaskData> listdata, PointsDao pointsDao, TaskDataDao taskDao) {
         this.listdata = new ArrayList<>(listdata);
+        this.pointsDao = pointsDao;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -38,7 +42,15 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show(); // TODO
+                int pointsToAdd = myListData.getPoints();
+                List<Points> points = pointsDao.queryBuilder()
+                        .where(PointsDao.Properties.Id.eq("main_points"))
+                        .list();
+                Points currentPoints = points.get(0);
+                currentPoints.setPoints(currentPoints.getPoints()+pointsToAdd);
+                pointsDao.update(currentPoints);
+                Toast.makeText(view.getContext(),"Congrats on finishing: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
+
             }
         });
     }
@@ -47,6 +59,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     @Override
     public int getItemCount() {
         return listdata.size();
+    }
+
+    public void itemClicked(View v){
+        String title = ((EditText) v.findViewById(R.id.addTaskTitle)).getText().toString();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -20,12 +20,14 @@ import java.util.List;
 public class TasksListFragment extends Fragment {
     private TaskDataDao taskDao;
     private Query<TaskData> tasksQuery;
+    private  PointsDao pointsDao;
 
     public TasksListFragment() {
         // Required empty public constructor
     }
 
-    public TasksListFragment(TaskDataDao taskDao){
+    public TasksListFragment(TaskDataDao taskDao, PointsDao pointsDao){
+        this.pointsDao = pointsDao;
         this.taskDao = taskDao;
     }
 
@@ -49,7 +51,7 @@ public class TasksListFragment extends Fragment {
     public void updateTasks(View v){
         List<TaskData> tasks = tasksQuery.list();
         RecyclerView recyclerView = (RecyclerView) v.findViewById(R.id.tasksRecyclerView);
-        TaskListAdapter adapter = new TaskListAdapter(tasks);
+        TaskListAdapter adapter = new TaskListAdapter(tasks, pointsDao, taskDao);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
         recyclerView.setAdapter(adapter);

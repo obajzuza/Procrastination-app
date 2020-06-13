@@ -1,5 +1,6 @@
 package com.akzo.procrastinationapp;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +15,14 @@ import java.util.List;
 
 public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.ViewHolder>{
     private ArrayList<PrizeData> listdata;
+    private PointsDao pointsDao;
+    private PrizeDataDao prizeDao;
 
     // RecyclerView recyclerView;
-    public PrizeListAdapter(List<PrizeData> listdata) {
+    public PrizeListAdapter(List<PrizeData> listdata, PointsDao pointsDao, PrizeDataDao prizeDao) {
         this.listdata = new ArrayList<>(listdata);
+        this.pointsDao = pointsDao;
+        this.prizeDao = prizeDao;
     }
 
     @Override
@@ -37,7 +42,24 @@ public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.View
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(),"click on item: "+myListData.getDescription(),Toast.LENGTH_LONG).show(); // TODO
+                int pointsToSubtract = myListData.getPoints();
+                List<Points> points = pointsDao.queryBuilder()
+                        .where(PointsDao.Properties.Id.eq("main_points"))
+                        .list();
+                Points currentPoints = points.get(0);
+
+                if(currentPoints.getPoints()-pointsToSubtract<0){
+                    Toast.makeText(view.getContext(),"Sorry you don't have enough points",Toast.LENGTH_LONG).show();
+                }else{
+                    currentPoints.setPoints(currentPoints.getPoints()-pointsToSubtract);
+                    pointsDao.update(currentPoints);
+                    Toast.makeText(view.getContext(),"You chose: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
+                    if(!myListData.getIsPersistent()){
+                        prizeDao.delete(myListData);
+                    }
+                    listdata.remove(myListData);
+                }
+                //TODO refresh view
             }
         });
     }

@@ -41,40 +41,32 @@ public class AddTaskFragment extends Fragment {
     }
 
     public void addTask(View v) {
-        Log.d("Dao", "what the task heck3?");
         String title = ((EditText) getView().findViewById(R.id.addTaskTitle)).getText().toString();
-        Log.d("Dao", "what the heck? " + title);
         String description = ((EditText) getView().findViewById(R.id.addTaskDesciption)).getText().toString();
-        Log.d("Dao", "what the heck?" + description);
         String deadline = ((EditText) getView().findViewById(R.id.addTaskDeadline)).getText().toString();
-        Log.d("Dao", "what the heck?" + description);
         int points = Integer.parseInt(((EditText) getView().findViewById(R.id.addTaskPoints)).getText().toString());
-        Log.d("Dao", "what the heck?");
-
-        Log.d("Dao", "what the heck?");
         TaskData task = new TaskData();
-        Log.d("Dao", "what the taask heck55?");
         try {
             task.setTitle(title);
-            Log.d("Dao", "what the heck55?");
             task.setDescription(description);
-            Log.d("Dao", "what the heck55?");
             task.setDeadline(deadline);
-            Log.d("Dao", "what the heck55?");
             task.setPoints(points);
-            Log.d("DaoExample", "new task" + task);
             taskDao.insert(task);
-            Log.d("Dao", "JeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeDUPA");
         }
         catch (android.database.sqlite.SQLiteConstraintException e){
             Toast toast = Toast.makeText(getActivity(),"Task with this title already exists",Toast.LENGTH_LONG);
             toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
             toast.show();
         }
+        ((EditText) getView().findViewById(R.id.addTaskTitle)).getText().clear();
+        ((EditText) getView().findViewById(R.id.addTaskDesciption)).getText().clear();
+        ((EditText) getView().findViewById(R.id.addTaskDeadline)).getText().clear();
+        ((EditText) getView().findViewById(R.id.addTaskPoints)).getText().clear();
+
         Toast toast = Toast.makeText(getActivity(),"Task added successfully",Toast.LENGTH_LONG);
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         toast.show();
         Log.d("DaoExample", "Inserted new task, title: " + task.getTitle());
-        getActivity().onBackPressed();
+//        getActivity().onBackPressed();
     }
 }

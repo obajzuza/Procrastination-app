@@ -13,17 +13,19 @@ import android.widget.Switch;
 
 public class PrizesActivity extends AppCompatActivity {
     private PrizeDataDao prizeDao;
+    private PointsDao pointsDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         prizeDao = daoSession.getPrizeDataDao();
+        pointsDao = daoSession.getPointsDao();
         setContentView(R.layout.activity_prizes);
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
-        ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao));
+        ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao, pointsDao));
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();
@@ -40,7 +42,7 @@ public class PrizesActivity extends AppCompatActivity {
             btn.setText(R.string.add);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             Log.d("UpdatePrize", "test prizes0909909");
-            ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao));
+            ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao, pointsDao));
             ft.commit();
         }
     }

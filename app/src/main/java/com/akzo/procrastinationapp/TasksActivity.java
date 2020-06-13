@@ -9,17 +9,19 @@ import androidx.fragment.app.FragmentTransaction;
 
 public class TasksActivity extends AppCompatActivity {
     private TaskDataDao taskDao;
+    private PointsDao pointsDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
         taskDao = daoSession.getTaskDataDao();
+        pointsDao = daoSession.getPointsDao();
         setContentView(R.layout.activity_tasks);
         // Begin the transaction
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
-        ft.replace(R.id.taskPlaceholder, new TasksListFragment(taskDao));
+        ft.replace(R.id.taskPlaceholder, new TasksListFragment(taskDao, pointsDao));
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();
@@ -35,7 +37,7 @@ public class TasksActivity extends AppCompatActivity {
         } else if (btn.getText() == getResources().getString(R.string.reject)) {
             btn.setText(R.string.add);
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.taskPlaceholder, new TasksListFragment(taskDao));
+            ft.replace(R.id.taskPlaceholder, new TasksListFragment(taskDao, pointsDao));
             ft.commit();
         }
     }
