@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +22,7 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
     public TaskListAdapter(List<TaskData> listdata, PointsDao pointsDao, TaskDataDao taskDao) {
         this.listdata = new ArrayList<>(listdata);
         this.pointsDao = pointsDao;
+        this.taskDao = taskDao;
     }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,7 +50,10 @@ public class TaskListAdapter extends RecyclerView.Adapter<TaskListAdapter.ViewHo
                 currentPoints.setPoints(currentPoints.getPoints()+pointsToAdd);
                 pointsDao.update(currentPoints);
                 Toast.makeText(view.getContext(),"Congrats on finishing: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
+                taskDao.delete(myListData);
+                listdata.remove(myListData);
 
+                TaskListAdapter.this.notifyDataSetChanged();
             }
         });
     }

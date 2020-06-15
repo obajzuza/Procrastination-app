@@ -24,10 +24,15 @@ public class AddTaskFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Log.d("Dao", "what the task heck3?");
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Log.d("Dao", "what the task heck3?");
         View v = inflater.inflate(R.layout.fragment_add_task, container, false);
         Button btn = (Button) v.findViewById(R.id.button2);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -36,7 +41,7 @@ public class AddTaskFragment extends Fragment {
                 addTask(v);
             }
         });
-        Log.d("Dao", "what the task heck3?");
+        Log.d("Dao", "what the task heck333333?");
         return v;
     }
 
@@ -67,6 +72,6 @@ public class AddTaskFragment extends Fragment {
         toast.setGravity(Gravity.TOP|Gravity.CENTER, 0, 0);
         toast.show();
         Log.d("DaoExample", "Inserted new task, title: " + task.getTitle());
-//        getActivity().onBackPressed();
+        getActivity().onBackPressed();
     }
 }

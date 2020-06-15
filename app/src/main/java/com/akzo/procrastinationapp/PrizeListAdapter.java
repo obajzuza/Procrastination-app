@@ -34,7 +34,7 @@ public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         final PrizeData myListData = listdata.get(position);
         holder.titleTextView.setText(listdata.get(position).getTitle());
         holder.descriptionTextView.setText(listdata.get(position).getDescription());
@@ -56,10 +56,12 @@ public class PrizeListAdapter extends RecyclerView.Adapter<PrizeListAdapter.View
                     Toast.makeText(view.getContext(),"You chose: "+myListData.getDescription(),Toast.LENGTH_LONG).show();
                     if(!myListData.getIsPersistent()){
                         prizeDao.delete(myListData);
+                        listdata.remove(myListData);
+
+                        PrizeListAdapter.this.notifyDataSetChanged();
                     }
-                    listdata.remove(myListData);
+
                 }
-                //TODO refresh view
             }
         });
     }
