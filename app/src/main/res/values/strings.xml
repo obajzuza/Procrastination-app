@@ -8,6 +8,17 @@
     <string name="recent_prize">Ostatnia nagroda:</string>
     <string name="add">Dodaj</string>
     <string name="reject">Odrzuć</string>
+
+    <!-- activity fragment_add_prize -->
+    <string name="enter_prize_title">Tytuł nagrody</string>
+    <string name="enter_prize_desc">Opis nagrody</string>
+    <string name="enter_prize_points">Ilość punktów do odblokowania</string>
+
+    <!-- activity fragment_add_task -->
+    <string name="enter_task_title">Tytuł zadania</string>
+    <string name="enter_task_desc">Opis zadania</string>
+    <string name="enter_task_deadline">DD-MM-YY</string>
+    <string name="enter_task_points">Ilość punktów za ukończenie</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

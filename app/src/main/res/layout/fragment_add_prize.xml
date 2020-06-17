@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:ems="10"
-                android:text="" />
+                android:text=""
+                android:hint="@string/enter_prize_title"/>
         </LinearLayout>
 
         <LinearLayout
@@ -53,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:ems="10"
-                android:text="" />
+                android:text=""
+                android:hint="@string/enter_prize_desc"/>
         </LinearLayout>
 
         <LinearLayout
@@ -75,7 +77,8 @@
                 android:layout_weight="2"
                 android:ems="10"
                 android:inputType="number"
-                android:text="" />
+                android:text=""
+                android:hint="@string/enter_prize_points"/>
         </LinearLayout>
 
             <Switch
