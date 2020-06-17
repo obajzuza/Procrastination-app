@@ -1,5 +1,6 @@
 package com.akzo.procrastinationapp;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +23,9 @@ public class TasksActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
         ft.replace(R.id.taskPlaceholder, new TasksListFragment(taskDao, pointsDao));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ft.replace(R.id.addTaskPlaceholder, new AddTaskFragment(taskDao));
+        }
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();

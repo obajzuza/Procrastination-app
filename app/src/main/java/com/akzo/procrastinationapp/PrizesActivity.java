@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 import org.greenrobot.greendao.query.Query;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,9 @@ public class PrizesActivity extends AppCompatActivity {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         // Replace the contents of the container with the new fragment
         ft.replace(R.id.prizePlaceholder, new PrizesListFragment(prizeDao, pointsDao));
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            ft.replace(R.id.addPrizePlaceholder, new AddPrizeFragment(prizeDao));
+        }
         // or ft.add(R.id.your_placeholder, new FooFragment());
         // Complete the changes added above
         ft.commit();
