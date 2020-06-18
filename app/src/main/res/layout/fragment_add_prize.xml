@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tytuł:" />
+                android:text="@string/title" />
 
             <EditText
                 android:id="@+id/addPrizeTitle"
@@ -46,7 +46,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Opis:" />
+                android:text="@string/desc" />
 
             <EditText
                 android:id="@+id/addPrizeDesciption"
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Punkty:" />
+                android:text="@string/pts" />
 
             <EditText
                 android:id="@+id/addPrizePoints"
@@ -85,7 +85,7 @@
                 android:id="@+id/switch1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Stale dostępna:"
+                android:text="@string/persistent"
                 android:textColor="@color/colorPrimary" />
 
 

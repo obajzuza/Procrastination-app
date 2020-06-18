@@ -4,10 +4,20 @@
     <!-- activity main -->
     <string name="pending">oczekujące zadania</string>
     <string name="points">punkty do wydania</string>
-    <string name="recent_task">Ostatnie zadanie:</string>
-    <string name="recent_prize">Ostatnia nagroda:</string>
+    <string name="tasks">Zadania</string>
+    <string name="tasks_desc">Zapisuj zadania, wypełniaj je i zbieraj punkty</string>
+    <string name="prizes">Nagrody</string>
+    <string name="prizes_desc">Wyznacz nagrody i odbierz je za punkty</string>
+    <string name="learning_mode">Learning mode</string>
+    <string name="next">dalej</string>
     <string name="add">Dodaj</string>
     <string name="reject">Odrzuć</string>
+
+    <!-- activity fragment_add_* -->
+    <string name="title">Tytuł:</string>
+    <string name="desc">Opis:</string>
+    <string name="pts">Punkty:</string>
+    <string name="persistent">Stale dostępna:</string>
 
     <!-- activity fragment_add_prize -->
     <string name="enter_prize_title">Tytuł nagrody</string>
@@ -15,6 +25,7 @@
     <string name="enter_prize_points">Ilość punktów do odblokowania</string>
 
     <!-- activity fragment_add_task -->
+    <string name="deadline">Deadline:</string>
     <string name="enter_task_title">Tytuł zadania</string>
     <string name="enter_task_desc">Opis zadania</string>
     <string name="enter_task_deadline">DD-MM-YY</string>

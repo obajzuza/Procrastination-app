@@ -111,7 +111,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="@string/recent_task"
+                    android:text="@string/tasks"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -135,7 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="tytuł ostatniego zadania"
+                        android:text="@string/tasks_desc"
                         android:textAllCaps="true"
                         app:layout_constraintStart_toEndOf="@+id/taskImageView"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -148,7 +148,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="dalej"
+                android:contentDescription="@string/next"
                 android:onClick="goToTasksList"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@android:drawable/ic_media_play" />
@@ -178,7 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed"
-                    android:text="@string/recent_prize"
+                    android:text="@string/prizes"
                     android:textAllCaps="true"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -202,7 +202,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed"
-                        android:text="tytuł ostatniej nagrody"
+                        android:text="@string/prizes_desc"
                         android:textAllCaps="true"
                         app:layout_constraintStart_toEndOf="@+id/prizeImageView"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -216,7 +216,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:contentDescription="dalej"
+                android:contentDescription="@string/next"
                 android:onClick="goToPrizesList"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@android:drawable/ic_media_play" />
@@ -238,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="0dp"
                 android:onClick="switchLearningMode"
-                android:text="Learning Mode" />
+                android:text="@string/learning_mode" />
         </LinearLayout>
     </LinearLayout>
 
